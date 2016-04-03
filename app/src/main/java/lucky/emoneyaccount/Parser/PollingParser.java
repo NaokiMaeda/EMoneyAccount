@@ -18,10 +18,10 @@ public class PollingParser {
 
 	public PollingParser(byte[] responseData){
 		this();
-		parseResponse(responseData);
+		parse(responseData);
 	}
 
-	public void parseResponse(byte[] responseData){
+	public void parse(byte[] responseData){
 		responseLength	= responseData[0] & 0xff;
 		responseCode	= responseData[1];
 		System.arraycopy(responseData , 2 , IDm , 0 , 8);
