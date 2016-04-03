@@ -8,6 +8,7 @@ import android.util.Log;
 import java.io.IOException;
 
 import lucky.emoneyaccount.Command.SuicaReadCommand;
+import lucky.emoneyaccount.Parser.ReadWOEParser;
 
 /**
  * Created by lucky on 16/02/25.
@@ -25,6 +26,7 @@ public class NFCFReaderCallback implements NfcAdapter.ReaderCallback{
             nfc.connect();
 			SuicaReadCommand suica = new SuicaReadCommand(idm);
 			response = nfc.transceive(suica.createGetHistoryCommand(10));
+			ReadWOEParser parser = new ReadWOEParser(response);
 		} catch (IOException e) {
             e.printStackTrace();
         }
